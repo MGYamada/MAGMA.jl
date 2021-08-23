@@ -7,8 +7,8 @@ import LinearAlgebra.LAPACK: gels!, gesv!, getrs!, getri!
     A = rand(T, size, size)
     B = rand(T, size, size)
 
-    dA = cu(A)
-    dB = cu(B)
+    dA = CuArray(A)
+    dB = CuArray(B)
 
     A_copy = copy(A)
     B_copy = copy(B)
@@ -36,8 +36,8 @@ end
     A = rand(T, size_test, size_test)
     B = rand(T, size_test, size_test)
 
-    dA = cu(A)
-    dB = cu(B)
+    dA = CuArray(A)
+    dB = CuArray(B)
 
     A_copy = copy(A)
     B_copy = copy(B)

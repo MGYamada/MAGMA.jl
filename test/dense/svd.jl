@@ -12,7 +12,7 @@ import LinearAlgebra.LAPACK: gebrd!
 
     # to test the GPU interface, one should convert the matrix data to cuda
     if interface == "GPU"
-        matrixToTest = cu(matrixToTest)
+        matrixToTest = CuArray(matrixToTest)
     end
 
     # define the job U and job VT, which are required by the MAGMA lib
@@ -49,7 +49,7 @@ end
 
     # to test the GPU interface, one should convert the matrix data to cuda
     if interface == "GPU"
-        matrixToTest = cu(matrixToTest)
+        matrixToTest = CuArray(matrixToTest)
     end
 
     # define the job MAGMA, which are required by the MAGMA lib
@@ -84,7 +84,7 @@ end
 
     # to test the GPU interface, one should convert the matrix data to cuda
     if interface == "GPU"
-        matrixToTest_copy = cu(matrixToTest_copy)
+        matrixToTest_copy = CuArray(matrixToTest_copy)
     end
 
     # initialize the MAGMA lib, serving as a necessary part before working
