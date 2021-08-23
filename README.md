@@ -1,8 +1,7 @@
 # MAGMA
 
-A Julia binding for MAGMA, don't drink it.
-
-**Disclaimer**: This is an on-going JSoC 2019 project, it is in very early stage and still work in progress.
+MAGMA.jl: wrapper of MAGMA in Julia. Still work in progress.
+We thank Roger-luo for the nice code. https://github.com/Roger-luo/MAGMA.jl
 
 ## Installation
 

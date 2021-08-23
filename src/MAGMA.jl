@@ -1,5 +1,5 @@
 module MAGMA
-using CUDAdrv, CUDAapi, CUDAnative, CuArrays
+using CUDA
 using CEnum
 
 using LinearAlgebra: triu, tril, dot, checksquare, chkstride1
@@ -9,6 +9,9 @@ export magma_gels!, magma_gesvd!, magma_gesdd!, magmaInit, magmaFinalize, magma_
 
 # export wrappers in linearsystemsolver
 export magma_gesv!, magma_getri!, magma_getrs!, magma_getrf!
+
+# export wrappers in eigen
+export magma_syevd!, magma_syevd_m!
 
 # export some wrappers in clang auto-generation
 export magma_init, magma_finalize
@@ -27,6 +30,10 @@ end
 
 macro magmafunc_gpu(function_name)
 	return Expr(:quote, Symbol("magma_", function_name, "_gpu"))
+end
+
+macro magmafunc_m(function_name)
+	return Expr(:quote, Symbol("magma_", function_name, "_m"))
 end
 
 # ! for parts of subroutines which can not do the query
