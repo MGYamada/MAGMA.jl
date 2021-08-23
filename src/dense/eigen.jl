@@ -121,7 +121,7 @@ for (syevd, elty, relty) in    ((:cheevd, :ComplexF32, :Float32),
                     W,
                     work,
                     lwork,
-                    rwork.
+                    rwork,
                     lrwork,
                     iwork,
                     liwork,
