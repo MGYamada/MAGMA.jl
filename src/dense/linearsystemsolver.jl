@@ -199,7 +199,7 @@ for type in magmaTypeList
             # println("\nThe info variable is: ", info, "\n")
         end
         function magma_getrs!(trans::magma_trans_t, A::Matrix{$elty}, ipiv::AbstractVector{Int}, B::Array{$elty})
-            magma_getrs!(trans, cu(A), ipiv, cu(B))
+            magma_getrs!(trans, CuArray(A), ipiv, CuArray(B))
         end
 
         #*# Parameters of getri
@@ -226,7 +226,7 @@ for type in magmaTypeList
             func_nb = eval(@magmafunc_nb($getri))
             nb    = func_nb(n)
             lwork = ceil(Int, real(n * nb))
-            work  = cu(Vector{$elty}(undef, max(1, lwork)))
+            work  = CuArray(Vector{$elty}(undef, max(1, lwork)))
             info  = Ref{Int}()
             # for i = 1:2  # first call returns lwork as work[1]
                 # ccall((@magmafunc_gpu($getri), libmagma), Cvoid, # ! MAGMA has no native cpu interface for getri
@@ -244,7 +244,7 @@ for type in magmaTypeList
             A
         end
         function magma_getri!(A::Matrix{$elty}, ipiv::Array{Int})
-            magma_getri!(cu(A), ipiv)
+            magma_getri!(CuArray(A), ipiv)
         end
 
         function magma_getrf!(A::AbstractMatrix{$elty})
